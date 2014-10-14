@@ -1,0 +1,38 @@
+<ion-view title="Math-O-Matic" hide-nav-bar="false" hide-back-button="true">
+  <ion-content class="has-header padding">
+
+<ul class="list">
+
+  <div class="item item-divider">
+    Program Contents
+  </div>
+  <li class="item"  ng-repeat="p in model.programs | filter:{enabled:true}">
+    {{p.durationInSec | duration}}{{p.skippable|skippable}} {{p.name}} 
+  </li>
+  <div class="item item-divider">
+    Total Time {{model.getTotalActiveTime()}}
+  </div>
+  
+</ul>
+		    <button  class="button button-positive" ng-click="onClickStart()">
+		      Start
+		    </button>
+
+<p></p>
+<p></p>
+<p></p>
+  </ion-content>
+
+<div class="tabs tabs-positive tabs-icon-only ">
+  <div class="tab-item" ng-click="onClickStart()">
+    <i class="icon ion-play"></i>
+  </div>
+  <a class="tab-item" href="#/tab/results">
+    <i class="icon ion-star"></i>
+  </a>
+  <a class="tab-item" href="#/tab/config/pin">
+    <i class="icon ion-gear-a"></i>
+  </a>
+</div>
+
+</ion-view>

@@ -1,0 +1,24 @@
+<ion-view title="{{currentProgram.name}}" hide-nav-bar="false" hide-back-button="true">
+  <ion-content class="has-header padding">
+    
+    <h1><span class="success-tick ion-checkmark">{{result.correct}}</span> <span class="failure-alert ion-close">{{result.incorrect}}</span> ={{result.getPercentCorrect()}}% </h1> 
+    <h2><span class="ion-clock">{{result.getDurationTotal()}}</span> ={{result.getDurationPerQuestion()}}s/q</h2>
+    
+	<canvas face emo="happy" height="90" width="90" color="rgb(255,191,0)"></canvas>
+	<span class="small-question">Well Done!</span>
+	
+	<div d3-bars bar-height="20" bar-padding="2" highlight-index="1" data="history"></div>
+
+    
+  </ion-content>
+
+  <div class="tabs tabs-positive tabs-icon-only">
+	<a ng-if="!finished" class="tab-item" href="#/program">
+	  <i class="icon ion-play"></i>
+	</a>
+	<a ng-if="finished" class="tab-item" href="#/tab/results">
+	  <i class="icon ion-star"></i>
+	</a>
+  </div>
+
+</ion-view>

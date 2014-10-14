@@ -1,0 +1,81 @@
+<ion-view title="Configuration" hide-nav-bar="false" hide-back-button="true"> 
+
+<ion-content class="has-header padding">
+
+	<div ng-show="!model.pinEntered">
+		<p ng-show="pinReset">PIN is PI to 2 decimal places</p>
+		<label class="item item-input"> <span class="input-label">PIN</span>
+			<input type="text" ng-model="enteredPin"
+			ng-change="checkPin(enteredPin)" />
+		</label>
+		<div class="pad"></div>
+	
+		<button class="button button-assertive" ng-click="resetPin()">
+			Reset PIN</button>
+	
+	</div>
+
+	<div ng-if="model.pinEntered">
+		<ul class="list">
+			<label class="item item-input"> <span class="input-label">PIN</span>
+				<input type="text" ng-model="model.pin" />
+			</label>
+	
+		</ul>
+	
+		<div class="item item-divider">
+			<button class="button button-icon icon ion-ios7-minus-outline"
+				ng-click="data.showDelete = !data.showDelete; data.showReorder = false">
+			</button>
+			<a class="button button-icon icon ion-ios7-plus-outline"
+				style="padding-left: 40px" href="#/tab/config/add-prog">
+			</a>
+			<button class="button" style="float: right"
+				ng-click="data.showDelete = false; data.showReorder = !data.showReorder">
+				<i class="icon ion-ios7-arrow-up"></i>
+				<i class="icon ion-ios7-arrow-down"></i>
+			</button>
+	
+		</div>
+	
+		<ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
+		
+			<ion-item ng-repeat="p in model.programs"
+					href="#/tab/config/modifyprog/{{p.configType}}/{{p.id}}"> <label
+					class="toggle toggle-positive"> <input type="checkbox"
+					ng-model="p.enabled" />
+					<div class="track">
+						<div class="handle"></div>
+					</div>
+				</label>{{p.durationInSec | duration}}{{p.skippable | skippable}}<br/>{{p.name}}
+			
+				<ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(p)">
+				</ion-delete-button>
+				<ion-reorder-button class="ion-navicon"
+					on-reorder="moveItem(p, $fromIndex, $toIndex)">
+				</ion-reorder-button>
+		
+			</ion-item>
+		
+			<div class="item item-divider">
+				<p>Total Time: {{model.getTotalActiveTime()}}</p>
+			</div>
+		</ion-list>
+	
+		<div class="pad"></div>
+		<button class="button button-assertive" ng-click="factoryReset()">
+			Factory Reset
+		</button>
+	
+	</div>
+	
+	
+
+
+
+
+
+
+</ion-content>
+
+</ion-view>

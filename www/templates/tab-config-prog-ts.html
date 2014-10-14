@@ -1,0 +1,62 @@
+<ion-view title="Total Sum" hide-nav-bar="false" hide-back-button="false">
+  <ion-content class="has-header padding">
+
+<div class="list">
+  <label class="item item-input">
+    <span class="input-label">Name</span>
+    <input type="text" ng-model="program.name"/>
+  </label>
+  <label class="item item-input">
+    <span class="input-label">Duration in seconds</span>
+    <input type="number" ng-model="program.durationInSec"/>
+  </label>
+  <li class="item item-toggle">
+     Skippable
+     <label class="toggle toggle-positive">
+       <input type="checkbox"  ng-model="program.skippable"/>
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
+  
+</div>
+
+<p>Practice mentally adding numbers to a total sum.</p>
+
+<h3>[{{program.num1Integer}},{{program.num2Integer}}]+{[{{program.num3Integer}},{{program.num4Integer}}]}{{program.numSums}}</h3>
+
+<button ng-if="program.id > 0 && dirty && valid" class="button button-positive" ng-click="save()">Save</button>
+
+<p class="failure-alert">{{error}}</p>
+
+
+<div class="list">
+  <label class="item item-input">
+    <span class="input-label">Range 1 Start</span>
+    <input type="number" ng-model="program.num1Integer"/>
+  </label>
+  <label class="item item-input">
+    <span class="input-label">Range 1 End </span>
+    <input type="number" ng-model="program.num2Integer"/>
+  </label>
+  <label class="item item-input">
+    <span class="input-label">Range 2 Start</span>
+    <input type="number" ng-model="program.num3Integer"/>
+  </label>
+  <label class="item item-input">
+    <span class="input-label">Range 2 End</span>
+    <input type="number" ng-model="program.num4Integer"/>
+  </label>
+  <label class="item item-input">
+    <span class="input-label">Number of Sums</span>
+    <input type="number" ng-model="program.numSums"/>
+  </label>
+</div>
+  
+  	<button ng-if="program.id == 0 && valid" class="button button-positive" ng-click="add()">Add</button>
+  	<button ng-if="program.id > 0 && dirty && valid" class="button button-positive" ng-click="save()">Save</button>
+  
+  </ion-content>
+
+</ion-view>

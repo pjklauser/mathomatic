@@ -1,0 +1,55 @@
+<ion-view hide-nav-bar="true">
+
+  <div id="displayPanel">
+		<div class="question {{textclass}}">
+			<p>{{displayText}}</p>
+			<p>
+			{{enteredAnswer}} 
+				 <span ng-if="showSuccess" class="success-tick ion-checkmark"> 
+				</span>
+	  		</p>
+	  	</div>
+	  	<div class="face">
+				
+				<canvas ng-if="showFailure && answer != null"  face emo="sad" height="90" width="90" color="rgb(230,0,0)"></canvas>
+				<button ng-if="showFailure && answer != null" class="button button-full button-assertive" ng-click="doClickRetry()">
+						Retry
+				</button>
+				<button ng-if="showFailure && answer != null" class="button button-full button-assertive" ng-click="doClickShow()">
+						Show 
+				</button>
+	  	</div>
+  </div>
+ 
+  
+	<div id="calculator">
+	<div class="height-padding">
+	</div>
+<div class="my-row" ng-class="(answer == null || showAnswer)  ? 'disabled' : 'enabled'" >
+  <div class="my-col col1 top-edge left-edge " on-touch="answer != null && doClick('7'); $event.stopPropagation()"><div class="inner">7</div></div>
+  <div class="my-col col2 top-edge" on-touch="answer != null && doClick('8'); $event.stopPropagation()"><div class="inner">8</div></div>
+  <div class="my-col col3 top-edge" on-touch="answer != null && doClick('9'); $event.stopPropagation()"><div class="inner">9</div></div>
+  <div class="my-col col4 top-edge right-edge" on-touch="answer != null && doClickDelete(); $event.stopPropagation()" ><div class="inner"><span class="ion-ios7-arrow-back"/></div></div>
+</div>
+<div class="my-row" ng-class="(answer == null || showAnswer) ? 'disabled' : 'enabled'" >
+  <div class="my-col col1 left-edge" on-touch="answer != null && doClick('4'); $event.stopPropagation()"><div class="inner">4</div></div>
+  <div class="my-col col2" on-touch="answer != null && doClick('5'); $event.stopPropagation()"><div class="inner">5</div></div>
+  <div class="my-col col3" on-touch="answer != null && doClick('6'); $event.stopPropagation()"><div class="inner">6</div></div>
+  <div class="my-col col4 right-edge"><div class="inner">/</div></div>
+</div>
+<div class="my-row" ng-class="(answer == null || showAnswer) ? 'disabled' : 'enabled'" >
+  <div class="my-col col1 left-edge" on-touch="answer != null && doClick('1'); $event.stopPropagation()"><div class="inner">1</div></div>
+  <div class="my-col col2" on-touch="answer != null && doClick('2'); $event.stopPropagation()"><div class="inner">2</div></div>
+  <div class="my-col col3" on-touch="answer != null && doClick('3'); $event.stopPropagation()"><div class="inner">3</div></div>
+  <div class="my-col col4 right-edge"><div class="inner">.</div></div>
+</div>
+
+<div class="my-row">
+  <div class="double-col col1 bottom-edge left-edge " ng-class="(answer == null || showAnswer) ? 'disabled' : 'enabled'" on-touch="answer != null && doClick('0'); $event.stopPropagation()"><div class="inner">0</div></div>
+  <div class="double-col col3 bottom-edge right-edge" ng-class="(answer == null || showAnswer || showFailure) ? 'enabled' : 'disabled'" on-touch="(answer == null || showAnswer || showFailure) && doClickEnter(); $event.stopPropagation()"><div class="inner">RET</div></div>
+</div>
+
+	</div>
+
+
+</ion-view>

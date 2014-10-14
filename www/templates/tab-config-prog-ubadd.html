@@ -1,0 +1,46 @@
+<ion-view title="Upperbounded Sum" hide-nav-bar="false" hide-back-button="false">
+  <ion-content class="has-header padding">
+
+<div class="list">
+  <label class="item item-input">
+    <span class="input-label">Name</span>
+    <input type="text" ng-model="program.name"/>
+  </label>
+  <label class="item item-input">
+    <span class="input-label">Duration in seconds</span>
+    <input type="number" ng-model="program.durationInSec"/>
+  </label>
+  <li class="item item-toggle">
+     Skippable
+     <label class="toggle toggle-positive">
+       <input type="checkbox"  ng-model="program.skippable"/>
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
+  
+</div>
+
+<p>Practice adding two numbers who's sum is bounded by some maximum number</p>
+
+<h3>0 &lt; X+Y &lt; {{program.num1Integer}}</h3>
+
+<button ng-if="program.id > 0 && dirty && valid" class="button button-positive" ng-click="save()">Save</button>
+
+<p class="failure-alert">{{error}}</p>
+
+
+<div class="list">
+  <label class="item item-input">
+    <span class="input-label">Maximum Sum</span>
+    <input type="number" ng-model="program.num1Integer"/>
+  </label>
+</div>
+  
+  	<button ng-if="program.id == 0 && valid" class="button button-positive" ng-click="add()">Add</button>
+  	<button ng-if="program.id > 0 && dirty && valid" class="button button-positive" ng-click="save()">Save</button>
+  
+  </ion-content>
+
+</ion-view>

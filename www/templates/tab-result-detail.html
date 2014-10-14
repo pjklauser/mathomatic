@@ -1,0 +1,26 @@
+<ion-view title="{{programName}}" hide-nav-bar="false" hide-back-button="false">
+  <ion-content class="has-header padding">
+
+	<a class="button button-positive" href="#/tab/results/graph/{{programName}}">Graph</a>
+	<div class="list">
+	
+	    <div ng-repeat="r in results" class="item">
+			{{r.timestamp | todate}} <span class="success-tick ion-checkmark">{{r.correct}}</span> <span class="failure-alert ion-close">{{r.incorrect}}</span> ={{r.getPercentCorrect()}}%
+
+    		<span class="ion-clock">{{r.getDurationPerQuestion()}}s/q</span>
+			
+			<div ng-if="r.wrongAnswers.length > 0" class="list list-inset">
+			
+			    <div ng-repeat="wa in r.wrongAnswers" class="item">
+			    	<span ng-repeat="s in wa.steps">{{s.displayText}}</span>&nbsp;<span class="failure-alert ion-close">{{wa.enteredAnswer}}</span>
+			    </div>
+			
+			</div>
+
+	    </div>
+	
+	</div>
+	<a class="button button-positive" href="#/tab/results/graph/{{programName}}">Graph</a>
+    
+  </ion-content>
+</ion-view>

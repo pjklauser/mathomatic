@@ -1,0 +1,23 @@
+<ion-view title="{{program.name}}" hide-nav-bar="false" hide-back-button="true">
+  <ion-content class="has-header padding">
+    
+    <h1 ng-if="program.duration() != 0">
+    	<span class="ion-clock"/>{{program.duration()}}
+    </h1>
+    <h2>
+    	{{program.summary()}}
+    </h2>
+	<canvas face emo="happy" height="180" width="180" color="rgb(255,191,0)"></canvas>
+	<p class="small-question">{{motivation}}</p>
+
+  </ion-content>
+<div class="tabs tabs-positive tabs-icon-only">
+  <a class="tab-item" ng-click="onClickPlay()">
+    <i class="icon ion-play"></i>
+  </a>
+  <a ng-if="program.skippable" class="tab-item" ng-click="onClickSkip()">
+    <i class="icon ion-skip-forward"></i>
+  </a>
+</div>
+
+</ion-view>
