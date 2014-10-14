@@ -77,7 +77,8 @@ angular.module('mathstrainer', ['ionic', 'mathstrainer.controllers', 'mathstrain
                       return d.correct + d.incorrect;
                     })])
                     .range([0, width]),
-                  translucentIndex = 1 / (scope.data.length+5)
+                  //translucentIndex = 1 / (scope.data.length+5)
+                    translucentIndex = 0
                     ;
  
               svg.attr('height', height);
