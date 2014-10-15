@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.kidsmathtrainer.mathomatic" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>mathomatic</name>
+  <name>Kids Math Trainer</name>
   <description>
-        A math trainer for kids.
+        A math trainer for kids, designed to help parents improve their child's mental arithmetic ability.
+        You have full control of the training program, being able to personalize an individual training program. 
+        You can monitor your child's progress, and adjust the program according to your individual needs.
     </description>
   <author email="pjklauser@gmail.com" href="http://kidsmathtrainer.com/">
       Peter Klauser
