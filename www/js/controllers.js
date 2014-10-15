@@ -33,6 +33,8 @@ angular.module('mathstrainer.controllers', ['mathstrainer.services'])
 .controller('StartCtrl', function( $scope, $window, $location, $ionicViewService, Game, Config) {
 	  console.log('StartCtrl ', $scope);
 
+	$ionicViewService.clearHistory();
+	
 	$scope.model = Config.getModel();
 	
 	$scope.onClickStart = function() {
@@ -51,6 +53,8 @@ angular.module('mathstrainer.controllers', ['mathstrainer.services'])
 .controller('ProgramCtrl', function( $scope, $window, $location, $ionicViewService, Game, Config, Motivation) {
 	console.log('ProgramCtrl ', $scope);
 
+	$ionicViewService.clearHistory();
+	
 	$scope.program = Game.getProgram();
 	$scope.motivation = Motivation.get();
 	
@@ -74,9 +78,11 @@ angular.module('mathstrainer.controllers', ['mathstrainer.services'])
 	};
 })
 
-.controller('PlayCtrl', function( $scope, $window, $location, Game, $timeout) {
+.controller('PlayCtrl', function( $scope, $window, $location, $ionicViewService, Game, $timeout) {
 	console.log('PlayCtrl ', $scope);
 
+	$ionicViewService.clearHistory();
+	
 	$scope.showSuccess = false;
 	$scope.showFailure = false;
 	$scope.showAnswer = false;
@@ -226,9 +232,11 @@ angular.module('mathstrainer.controllers', ['mathstrainer.services'])
 
 })
 
-.controller('ScoreCtrl', function( $scope, $window, $location, Game, Config, Result) {
-	  console.log('ScoreCtrl ', $scope);
+.controller('ScoreCtrl', function( $scope, $window, $location, $ionicViewService, Game, Config, Result) {
+	console.log('ScoreCtrl ', $scope);
 
+	$ionicViewService.clearHistory();
+		
 	$scope.currentProgram = Game.getProgram();
 	$scope.result = Game.getResult();
 	$scope.nextProgram = Game.nextProgram();
