@@ -78,11 +78,9 @@ angular.module('mathstrainer.controllers', ['mathstrainer.services'])
 	};
 })
 
-.controller('PlayCtrl', function( $scope, $window, $location, $ionicViewService, Game, $timeout) {
+.controller('PlayCtrl', function( $scope, $window, $location, Game, $timeout) {
 	console.log('PlayCtrl ', $scope);
 
-	$ionicViewService.clearHistory();
-	
 	$scope.showSuccess = false;
 	$scope.showFailure = false;
 	$scope.showAnswer = false;
@@ -232,11 +230,9 @@ angular.module('mathstrainer.controllers', ['mathstrainer.services'])
 
 })
 
-.controller('ScoreCtrl', function( $scope, $window, $location, $ionicViewService, Game, Config, Result) {
+.controller('ScoreCtrl', function( $scope, $window, $location, Game, Config, Result) {
 	console.log('ScoreCtrl ', $scope);
 
-	$ionicViewService.clearHistory();
-		
 	$scope.currentProgram = Game.getProgram();
 	$scope.result = Game.getResult();
 	$scope.nextProgram = Game.nextProgram();
@@ -255,10 +251,12 @@ angular.module('mathstrainer.controllers', ['mathstrainer.services'])
 	
 })
 
-.controller('ResultsCtrl', function($scope, Config, Result) {
+.controller('ResultsCtrl', function($scope, $ionicViewService, Config, Result) {
     console.log('ResultsCtrl ', $scope);
     
-    $scope.model = Config.getModel();
+	$ionicViewService.clearHistory();
+
+	$scope.model = Config.getModel();
     
 	$scope.getLastResultPercent = function(programName) {
 		console.log('getLastResultPercent '+programName);
@@ -300,9 +298,11 @@ angular.module('mathstrainer.controllers', ['mathstrainer.services'])
 })
 
 
-.controller('ConfigPinCtrl', function($scope, Config) {
+.controller('ConfigPinCtrl', function($scope, $ionicViewService, Config) {
     console.log('ConfigPinCtrl ', $scope);
 	
+	$ionicViewService.clearHistory();
+
     var PI = '3.14';
     var PI_msg = 'PI to 2 decimal places';
     

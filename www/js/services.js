@@ -205,13 +205,16 @@ angular.module('mathstrainer.services', [])
 	                   'Keep trying!',
 	                   'You are doing great!',
 	                   'Come on now',
+	                   'Super!',
 	                   'Yeah man',
+	                   'Wonderful',
 	                   'Awesome dude',
+	                   'Are you ready?',
 	                   'Just do it!'
 	  ];
 	  return {
 	    get: function() {
-	    	var pos = RandomIntFromInterval(0,motivations.length);
+	    	var pos = RandomIntFromInterval(0,motivations.length-1);
 	    	return motivations[pos];
 	    }
 	  }
