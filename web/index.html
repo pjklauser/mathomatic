@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Math-O-Matic</title>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	
+<style>
+.red {
+	background-color: #f11;
+}
+
+
+</style>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+	<div class="container">
+		<nav class="navbar navbar-default" role="navigation">
+			<!-- navbar-fixed-top -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#features">Features</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="#">Android Playstore</a>
+					</li>
+<!-- 					
+					<li>
+						<a href="#">Apple Appstore</a>
+					</li>
+
+					<li class="dropdown">
+						<a class="dropdown-toggle"	data-toggle="dropdown" href="#">
+							Configuration <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li class="divider"></li>
+							<li><a href="#">Total Sum</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Sequential Multiplication</a></li>
+							<li><a href="#">Random Selection Multiplication</a></li>
+						</ul>
+					</li>
+ -->
+				</ul>
+
+			</div>
+			
+		</nav>
+
+	<div class="jumbotron">
+	  <h1>Math-O-Matic</h1>
+	  <p>Help your child improve their mental arithmetic. Math-O-Matic is designed to enable parents to actively assist their children practice and improve their mental arithmetic.</p>
+	  <ul>
+	  <li>
+	  	Configure a collection of exercises to individually suite your child's unique needs.
+	  </li>
+	  <li>
+	  	Monitor your child's progress. Discover where your child has difficulties.
+	  </li>
+	  <li>
+	  	Adjust the program to support you child further.
+	  </li>
+	  </ul>
+	  <p></p>
+	  <p><a class="btn btn-primary btn-lg" role="button" href="http://app.kidsmathstrainer.com/">Play online</a></p>
+	</div>
+
+
+		<div id="features" class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">Features</h4>
+            </div>
+            <div class="panel-body">
+                    <ul>
+	                    <li>
+	                    Define a program as a set of individual exercises. The duration of each exercise and therefore the duration of the whole exercise program can be determined precisely. It is important that children are not burdened for too long with exercises which are too difficult. Regular practice, even when not very long, is more effective than irregular practice. 
+	                    </li>
+	                    <li>
+	                    Exercises can be stipulated as optional or mandatory for the practice program.
+	                    </li>
+	                    <li>
+	                    Exercises which you have defined can be easily switched on or off in the practice program, so you can quickly adjust which exercises are practiced.
+	                    </li>
+	                    <li>
+	                    Construct individual exercises from a selection of exercise templates:
+	            <div class="panel-group" id="A">
+	                <div class="panel panel-default">
+	                    <div class="panel-heading">
+	                        <h4 class="panel-title">
+	                            <a class="accordian-toggle" data-toggle="collapse" data-parent="#A" href="#collapseOne"><span class="glyphicon glyphicon-play"></span>Practice Multiplication Tables</a>
+	                        </h4>
+	                    </div>
+	                    <div id="collapseOne" class="panel-collapse collapse">
+	                        <div class="panel-body">
+	                    		Practice multiplication tables by repetition. Eg. 2x4=, 3x4=, 4x4=...
+	                        </div>
+	                    </div>
+	                </div>
+	           		<div class="panel panel-default">
+	                    <div class="panel-heading">
+	                        <h4 class="panel-title">
+	                            <a class="accordian-toggle" data-toggle="collapse" data-parent="#A" href="#collapseTwo"><span class="glyphicon glyphicon-play"></span>Test Multiplication Tables</a>
+	                        </h4>
+	                    </div>
+	                    <div id="collapseTwo" class="panel-collapse collapse">
+	                        <div class="panel-body">
+	                    		Test multiplication tables by randomly selecting multiplications from a range of values. Eg. 8x7, 3x2, 4x5... 
+	                        </div>
+	                    </div>
+	                </div>
+	            	<div class="panel panel-default">
+	                	<div class="panel-heading">
+	                        <h4 class="panel-title">
+	                            <a class="accordian-toggle" data-toggle="collapse" data-parent="#A" href="#collapseThree"><span class="glyphicon glyphicon-play"></span>Total Sum</a>
+	                        </h4>
+	                    </div>
+	                    <div id="collapseThree" class="panel-collapse collapse">
+	                        <div class="panel-body">
+								Practice mental tallying. A running total must be remembered whilst adding additional values to the total. Eg. 40+4+5+6, where the numbers displayed are 40, +4, +5 and +6= respectively.
+	                        </div>
+	                    </div>
+	                </div>
+	            	<div class="panel panel-default">
+	                	<div class="panel-heading">
+	                        <h4 class="panel-title">
+	                            <a class="accordian-toggle" data-toggle="collapse" data-parent="#A" href="#collapseFour"><span class="glyphicon glyphicon-play"></span>Upperbounded Sum</a>
+	                        </h4>
+	                    </div>
+	                    <div id="collapseFour" class="panel-collapse collapse">
+	                        <div class="panel-body">
+	                            Given some maximum value, say 100, we choose two random numbers who's sum is < 100. Eg. 45+32, 10+39.
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+
+
+	                    </li>
+	                    
+	                    <li>
+	                    The configuration is protected with a PIN code.
+	                    </li>
+	                    <li>
+	                    View the results of each exercise at any time. Discover patterns from mistakes and discover the speed of mental calculation. 
+	                    </li>
+	                    <li>
+	                    Visualization of the result history of each exercise. Be able to tell if your exercise program is actually helping your child. 
+	                    </li>
+                    </ul>
+            </div>
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>
