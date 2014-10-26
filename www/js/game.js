@@ -447,3 +447,63 @@ function UpperBoundedAdditionProgram() {
 	}
 }
 
+
+function SubtractionConfig() {
+	this.configType = "subtr"
+
+	this.id = 0;
+	this.enabled = true;
+	this.name = "Enter Name";
+	this.skippable = true;
+	this.durationInSec = 60;
+	
+	this.num1Integer = 10;
+	this.num2Integer = 99;
+	this.num3Integer = 1;
+	this.num4Integer = 9;
+}
+
+function SubtractionProgram() {
+	this.config = function( config ) {
+		this.name = config.name;
+		this.skippable = config.skippable;
+		this.durationInSec = config.durationInSec;
+		this.num1Integer = config.num1Integer;
+		this.num2Integer = config.num2Integer;
+		this.num3Integer = config.num3Integer;
+		this.num4Integer = config.num4Integer;
+	};
+	
+	this.summary = function() {
+		return ''+InclusiveNumberRangeDisplay(this.num1Integer,this.num2Integer)+"-x="+InclusiveNumberRangeDisplay(this.num3Integer,this.num4Integer);
+	};
+	
+	this.duration = function() {
+		return DisplayDuration(this.durationInSec);
+	}
+	
+	this.init = function() {
+		return new ProgramContext(this.durationInSec*1000);
+	};
+	
+	// get an array of CalculatorStates from 
+	this.generate = function( context ) {
+		if ( context.isTimeExceeded() ) {
+			// time exceeded, go on to next program.
+			console.log('Duration exceeded ' + this.durationInSec);
+			return null;
+		}
+		
+		var sum = RandomIntFromInterval(this.num1Integer,this.num2Integer);
+		
+		var rangeStart = sum - this.num3Integer;
+		var rangeEnd = sum - this.num4Integer;
+		var sub = RandomIntFromInterval(rangeStart,rangeEnd);
+		
+		var flow = new CalculatorFlow();
+		flow.addState( new CalculatorState(IntegerDisplay(sum)+'-'+IntegerDisplay(sub), IntegerDisplay(sum-sub)) );
+		return flow;
+	}
+}
+
+

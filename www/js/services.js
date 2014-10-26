@@ -358,12 +358,22 @@ angular.module('mathstrainer.services', [])
 			prog5.durationInSec = 60;
 			prog5.num1Integer = 99;
 			
+			var prog6 = new SubtractionConfig();
+			prog6.id = 6;
+			prog6.name = "Difference up to 10 in the 100 range";
+			prog6.durationInSec = 60;
+			prog6.num1Integer = 10;
+			prog6.num2Integer = 99;
+			prog6.num3Integer = 1;
+			prog6.num4Integer = 10;
+			
 			this.programs = LocalStorage.getObject('programs', [
 			            			            prog1,
 			            			            prog2,
 			            			            prog3,
 			            			            prog4,
-			            			            prog5
+			            			            prog5,
+			            			            prog6
 			            			          ]);
 			this.maxId = LocalStorage.get('maxId', 0);
 			this.pin = LocalStorage.get('pin', '3.14');
@@ -480,6 +490,10 @@ angular.module('mathstrainer.services', [])
 		    		  gamestate.programs.push(p);
 		    	  } else if ( conf.configType == 'ubadd' ) {
 		    		  var p = new UpperBoundedAdditionProgram();
+		    		  p.config(conf);
+		    		  gamestate.programs.push(p);
+		    	  } else if ( conf.configType == 'subtr' ) {
+		    		  var p = new SubtractionProgram();
 		    		  p.config(conf);
 		    		  gamestate.programs.push(p);
 		    	  }

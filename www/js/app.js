@@ -423,6 +423,27 @@ angular.module('mathstrainer', ['ionic', 'mathstrainer.controllers', 'mathstrain
       }
     })
 	
+    .state('tab.config-add-subtr', {
+      url: '/config/newprog/subtr',
+      views: {
+        'tab-config': {
+          templateUrl: 'templates/tab-config-prog-subtr.html',
+          controller: 'AddModifySubtractionConfigCtrl'
+        }
+      }
+    })
+
+    .state('tab.config-modify-subtr', {
+      url: '/config/modifyprog/subtr/:programId',
+      views: {
+        'tab-config': {
+          templateUrl: 'templates/tab-config-prog-subtr.html',
+          controller: 'AddModifySubtractionConfigCtrl'
+        }
+      }
+    })
+
+    
     ;
 
   // if none of the above states are matched, use this as the fallback
