@@ -382,26 +382,32 @@ function TotalSumProgram() {
 		var flow = new CalculatorFlow();
 		
 		var sum = RandomIntFromInterval(this.num1Integer,this.num2Integer);
-		flow.addState( new CalculatorState(IntegerDisplay(sum), null) );
-		var prevInt = sum;
-		for( var i = 0; i < this.numSums-1; i++ ) {
-			var nextInteger = RandomIntFromInterval(this.num3Integer,this.num4Integer);
-			if ( nextInteger == prevInt ) {
-				// just increment to make it != previous one.
-				nextInteger = nextInteger + 1;
+		if ( this.numSums > 1 ) {
+			flow.addState( new CalculatorState(IntegerDisplay(sum), null) );
+			var prevInt = sum;
+			for( var i = 0; i < this.numSums-1; i++ ) {
+				var nextInteger = RandomIntFromInterval(this.num3Integer,this.num4Integer);
+				if ( nextInteger == prevInt ) {
+					// just increment to make it != previous one.
+					nextInteger = nextInteger + 1;
+				}
+				flow.addState( new CalculatorState('+'+IntegerDisplay(nextInteger) ,null) );
+				sum += nextInteger;
+				prevInt = nextInteger;
 			}
-			flow.addState( new CalculatorState('+'+IntegerDisplay(nextInteger) ,null) );
-			sum += nextInteger;
-			prevInt = nextInteger;
+			var lastInteger = RandomIntFromInterval(this.num3Integer,this.num4Integer);
+			if ( lastInteger == prevInt ) {
+				// just increment to make it != previous one.
+				lastInteger = lastInteger + 1;
+			}
+			sum += lastInteger;
+			
+			flow.addState( new CalculatorState('+'+IntegerDisplay(lastInteger)+DisplayEquals(), IntegerDisplay(sum) ));
+		} else {
+			var lastInteger = RandomIntFromInterval(this.num3Integer,this.num4Integer);
+			var total = sum + lastInteger;
+			flow.addState( new CalculatorState(IntegerDisplay(sum)+'+'+IntegerDisplay(lastInteger), IntegerDisplay(total) ));
 		}
-		var lastInteger = RandomIntFromInterval(this.num3Integer,this.num4Integer);
-		if ( lastInteger == prevInt ) {
-			// just increment to make it != previous one.
-			lastInteger = lastInteger + 1;
-		}
-		sum += lastInteger;
-		
-		flow.addState( new CalculatorState('+'+IntegerDisplay(lastInteger)+DisplayEquals(), IntegerDisplay(sum) ));
 		return flow;
 	}
 }
