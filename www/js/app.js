@@ -383,6 +383,26 @@ angular.module('mathstrainer', ['ionic', 'mathstrainer.controllers', 'mathstrain
       }
     })
 
+    .state('tab.config-add-rsd', {
+      url: '/config/newprog/rsd',
+      views: {
+        'tab-config': {
+          templateUrl: 'templates/tab-config-prog-rsd.html',
+          controller: 'AddModifyRandomSelectDivisionConfigCtrl'
+        }
+      }
+    })
+
+    .state('tab.config-modify-rsd', {
+      url: '/config/modifyprog/rsd/:programId',
+      views: {
+        'tab-config': {
+          templateUrl: 'templates/tab-config-prog-rsd.html',
+          controller: 'AddModifyRandomSelectDivisionConfigCtrl'
+        }
+      }
+    })
+
     .state('tab.config-add-ts', {
       url: '/config/newprog/ts',
       views: {

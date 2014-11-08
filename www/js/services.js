@@ -367,13 +367,23 @@ angular.module('mathstrainer.services', [])
 			prog6.num3Integer = 1;
 			prog6.num4Integer = 10;
 			
+			var prog7 = new RndSelectDivisionConfig();
+			prog7.id = 3;
+			prog7.name = "Practice Division";
+			prog7.durationInSec = 60;
+			prog7.num1Integer = 1;
+			prog7.num2Integer = 10;
+			prog7.num3Integer = 1;
+			prog7.num4Integer = 10;
+			
 			this.programs = LocalStorage.getObject('programs', [
 			            			            prog1,
 			            			            prog2,
 			            			            prog3,
 			            			            prog4,
 			            			            prog5,
-			            			            prog6
+			            			            prog6,
+			            			            prog7
 			            			          ]);
 			this.maxId = LocalStorage.get('maxId', 0);
 			this.pin = LocalStorage.get('pin', '3.14');
@@ -482,6 +492,14 @@ angular.module('mathstrainer.services', [])
 		    		  gamestate.programs.push(p);
 		    	  } else if ( conf.configType == 'rsm' ) {
 		    		  var p = new RndSelectMultiplicationProgram();
+		    		  p.config(conf);
+		    		  gamestate.programs.push(p);
+		    	  } else if ( conf.configType == 'rsd' ) {
+		    		  var p = new RndSelectDivisionProgram();
+		    		  p.config(conf);
+		    		  gamestate.programs.push(p);
+		    	  } else if ( conf.configType == 'rsd' ) {
+		    		  var p = new RndSelectDivisionProgram();
 		    		  p.config(conf);
 		    		  gamestate.programs.push(p);
 		    	  } else if ( conf.configType == 'ts' ) {

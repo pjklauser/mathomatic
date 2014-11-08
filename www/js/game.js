@@ -82,6 +82,10 @@ function InclusiveNumberRangeDisplay( num1, num2 ) {
 function IntegerMultiplicationDisplay( num1, num2 ) {
 	return ''+num1 + 'x' +num2;
 }
+//the display of division
+function IntegerDivisionDisplay( num1, num2 ) {
+	return ''+num1 + '/' +num2;
+}
 //the result of multiplication as a string
 function IntegerMultiplicationResult( num1, num2 ) {
 	return ''+(num1 * num2);
@@ -300,6 +304,83 @@ function RndSelectMultiplicationProgram() {
 			for( var j = this.num3Integer; j <= this.num4Integer; j++ ) {
 				var flow = new CalculatorFlow();
 				flow.addState( new CalculatorState(IntegerMultiplicationDisplay(i, j), IntegerMultiplicationResult(i, j)) );
+				questions.push(flow);
+			}
+		}
+		context.questions = shuffle(questions);
+		context.indexPos = 0;
+	};
+	
+	this.init = function() {
+		var memory = new ProgramContext(this.durationInSec*1000);
+		this.internalInit(memory);
+		return memory;
+	};
+	
+	// get an array of CalculatorStates from 
+	this.generate = function( context ) {
+		if ( context.isTimeExceeded() ) {
+			// time exceeded, go on to next program.
+			return null;
+		}
+
+		if ( context.indexPos > context.questions.length ) {
+			// completed all, go on to next program.
+			console.log('Index exceeded ' + this.indexPos);
+			this.internalInit(context);
+		}
+		var flow = context.questions[context.indexPos];
+		context.indexPos = context.indexPos + 1;
+		return flow;
+	}
+}
+
+
+function RndSelectDivisionConfig() {
+	this.configType = "rsd"
+		
+	this.id = 0;
+	this.enabled = true;
+	this.name = "Enter Name";
+	this.skippable = true;
+	this.durationInSec = 60;
+	
+	this.num1Integer = 1;
+	this.num2Integer = 1;
+	this.num3Integer = 1;
+	this.num4Integer = 1;
+}
+
+function RndSelectDivisionProgram() {
+	this.config = function( config ) {
+		this.name = config.name;
+		this.skippable = config.skippable;
+		this.durationInSec = config.durationInSec;
+		this.num1Integer = config.num1Integer;
+		this.num2Integer = config.num2Integer;
+		this.num3Integer = config.num3Integer;
+		this.num4Integer = config.num4Integer;
+	};
+	
+	this.summary = function() {
+		return 'RndSel('+IntegerMultiplicationDisplay(InclusiveNumberRangeDisplay(this.num1Integer,this.num2Integer),InclusiveNumberRangeDisplay(this.num3Integer,this.num4Integer))+') as division';
+	};
+
+	this.duration = function() {
+		return DisplayDuration(this.durationInSec);
+	};
+	
+	this.internalInit = function(context) {
+		var questions = [];
+		
+		for( var i = this.num1Integer ; i <= this.num2Integer; i++ ) {
+			for( var j = this.num3Integer; j <= this.num4Integer; j++ ) {
+				var flow = new CalculatorFlow();
+				
+				var prod = i * j;
+				// prod / i = j
+				
+				flow.addState( new CalculatorState(IntegerDivisionDisplay(prod, i), IntegerDisplay(j)) );
 				questions.push(flow);
 			}
 		}

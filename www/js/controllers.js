@@ -510,6 +510,78 @@ angular.module('mathstrainer.controllers', ['mathstrainer.services'])
       	  }, true);
 })
 
+.controller('AddModifyRandomSelectDivisionConfigCtrl', function($scope, $stateParams, Config) {
+	  console.log('AddModifyRandomSelectDivisionConfigCtrl ', $scope);
+
+	  $scope.program = ('programId' in $stateParams) ? clone(Config.getProgram($stateParams.programId)) : null;
+	  if ( $scope.program == null ) {
+		  $scope.program = new RndSelectDivisionConfig();
+	  };
+	  $scope.dirty = false;
+	  $scope.valid = false;
+	  $scope.error = '';
+	  
+	  $scope.add = function() {
+		  Config.addProgram($scope.program);
+	  };  
+	  $scope.save = function() {
+		  var c = Config.getProgram($scope.program.id);
+		  merge(c, $scope.program);
+		  Config.save();
+		  $scope.dirty = false;
+	  };  
+	  $scope.validate = function() {
+		  if ( $scope.program.durationInSec <= 0 ) {
+			  $scope.valid = false;
+			  $scope.error = 'Duration cannot be <= 0';
+			  return;
+		  }
+		  if ( $scope.program.num1Integer <= 0 ) {
+			  $scope.valid = false;
+			  $scope.error = 'Range 1 Start cannot be <= 0';
+			  return;
+		  }
+		  if ( $scope.program.num2Integer <= 0 ) {
+			  $scope.valid = false;
+			  $scope.error = 'Range 1 End cannot be <= 0';
+			  return;
+		  }
+		  if ( $scope.program.num3Integer <= 0 ) {
+			  $scope.valid = false;
+			  $scope.error = 'Range 2 Start cannot be <= 0';
+			  return;
+		  }
+		  if ( $scope.program.num4Integer <= 0 ) {
+			  $scope.valid = false;
+			  $scope.error = 'Range 2 End cannot be <= 0';
+			  return;
+		  }
+		  if ( $scope.program.num2Integer < $scope.program.num1Integer ) {
+			  $scope.valid = false;
+			  $scope.error = 'Range 1 End < Range 1 Start';
+			  return;
+		  }
+		  if ( $scope.program.num4Integer < $scope.program.num3Integer ) {
+			  $scope.valid = false;
+			  $scope.error = 'Range 2 End < Range 2 Start';
+			  return;
+		  }
+		  $scope.valid = true;
+		  $scope.error = '';
+	  };
+     $scope.$watch( 'program', function(newValue, oldValue ) {
+    	    if(oldValue !== newValue ) {
+     	    	console.log('Config Changed ', newValue);
+     	    	
+     	    	$scope.validate();
+     	    	
+     	    	if ( $scope.program.id > 0 ) {
+         	    	$scope.dirty = true;
+     	    	}
+     	    }
+      	  }, true);
+})
+
 .controller('AddModifyTotalSumConfigCtrl', function($scope, $stateParams, Config) {
 	  console.log('AddModifyTotalSumConfigCtrl ', $scope);
 
