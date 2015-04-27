@@ -368,7 +368,7 @@ angular.module('mathstrainer.services', [])
 			prog6.num4Integer = 10;
 			
 			var prog7 = new RndSelectDivisionConfig();
-			prog7.id = 3;
+			prog7.id = 7;
 			prog7.name = "Practice Division";
 			prog7.durationInSec = 60;
 			prog7.num1Integer = 1;
